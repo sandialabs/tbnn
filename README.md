@@ -88,8 +88,3 @@ python plasticity_example_driver.py
 ```
 These are toy examples, and are meant to show how the TBNN code base can be utilized and how to set up a data processor class to calculate the tensor and scalar invariant bases.
 
-## Copyright:
-Copyright 2017 Sandia Corporation. Under the terms of Contract DE-AC04-94AL85000, 
-there is a non-exclusive license for use of this work by or on behalf of the U.S. Government. 
-Export of this program may require a license from the United States Government.
-
