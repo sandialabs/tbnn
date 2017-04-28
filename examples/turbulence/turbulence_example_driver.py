@@ -40,7 +40,6 @@ def load_channel_data():
 
     # Load in data from channel.txt
     data = np.loadtxt('channel.txt', skiprows=4)
-    np.random.shuffle(data)
     k = data[:, 0]
     eps = data[:, 1]
     grad_u_flat = data[:, 2:11]
@@ -100,6 +99,7 @@ def main():
     split_fraction = 0.8  # Fraction of data to use for training
     enforce_realizability = True  # Whether or not we want to enforce realizability constraint on Reynolds stresses
     num_realizability_its = 5  # Number of iterations to enforce realizability
+    seed = 12345 # use for reproducibility, set equal to None for no seeding
 
     # Load in data
     k, eps, grad_u, stresses = load_channel_data()
@@ -117,8 +117,10 @@ def main():
             y = TurbulenceKEpsDataProcessor.make_realizable(y)
 
     # Split into training and test data sets
+    if seed:
+        np.random.seed(seed) # sets the random seed for Theano
     x_train, tb_train, y_train, x_test, tb_test, y_test = \
-        TurbulenceKEpsDataProcessor.train_test_split(x, tb, y,fraction=split_fraction)
+        TurbulenceKEpsDataProcessor.train_test_split(x, tb, y, fraction=split_fraction, seed=seed)
 
     # Define network structure
     structure = NetworkStructure()

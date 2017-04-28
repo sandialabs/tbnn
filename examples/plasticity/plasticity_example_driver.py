@@ -110,6 +110,7 @@ def main():
     average_interval = 4  # Number of intervals averaged over for early stopping criteria
     learning_rate_decay = 0.995 # Reduction per epoch of the learning rate
     split_fraction = 0.8  # Fraction of data to use for training
+    seed = 12345 # Random number generator seed for reproducibility, set equal to None for no seeding
 
     # Load in data
     strain, plastic_strain, strain_dot, plastic_strain_dot = load_plasticity_data()
@@ -121,8 +122,11 @@ def main():
     y = data_processor.calc_output(plastic_strain_dot, strain_dot)  # Plastic strain time derivative tensor
 
     # Split into training and test data sets
+    if seed:
+        np.random.seed(seed) # sets the random seed for Theano
     x_train, tb_train, y_train, x_test, tb_test, y_test = DataProcessor.train_test_split(x, tb, y,
-                                                                                            fraction=split_fraction)
+                                                                                         fraction=split_fraction,
+                                                                                         seed=seed)
 
     # Define network structure
     structure = NetworkStructure()

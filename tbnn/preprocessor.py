@@ -27,7 +27,7 @@ class DataProcessor:
         return outputs
 
     @staticmethod
-    def train_test_split(inputs, tb, outputs, fraction=0.8, randomize=True):
+    def train_test_split(inputs, tb, outputs, fraction=0.8, randomize=True, seed=None):
         """
         Split inputs and outputs into training and validation set
         :param inputs: scalar invariants
@@ -42,6 +42,8 @@ class DataProcessor:
         num_train = int(fraction*num_points)
         idx = range(num_points)
         if randomize:
+            if seed:
+                random.seed(seed)
             random.shuffle(idx)
         train_idx = idx[:num_train]
         test_idx = idx[num_train:]

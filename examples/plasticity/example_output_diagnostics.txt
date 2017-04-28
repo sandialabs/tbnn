@@ -1,0 +1,67 @@
+Epoch 1 took 0.010s
+  rmse training loss:		0.394891
+  rmse validation loss:		0.377087
+Epoch 101 took 0.008s
+  rmse training loss:		0.020516
+  rmse validation loss:		0.019418
+Epoch 201 took 0.008s
+  rmse training loss:		0.013690
+  rmse validation loss:		0.015470
+Epoch 301 took 0.008s
+  rmse training loss:		0.007892
+  rmse validation loss:		0.009428
+Epoch 401 took 0.008s
+  rmse training loss:		0.005142
+  rmse validation loss:		0.005264
+Epoch 501 took 0.008s
+  rmse training loss:		0.003811
+  rmse validation loss:		0.003678
+Epoch 601 took 0.008s
+  rmse training loss:		0.008058
+  rmse validation loss:		0.008332
+Epoch 701 took 0.008s
+  rmse training loss:		0.002485
+  rmse validation loss:		0.001507
+Epoch 801 took 0.010s
+  rmse training loss:		0.003334
+  rmse validation loss:		0.002030
+Epoch 901 took 0.008s
+  rmse training loss:		0.001772
+  rmse validation loss:		0.001555
+Epoch 1001 took 0.008s
+  rmse training loss:		0.001694
+  rmse validation loss:		0.001551
+Epoch 1101 took 0.008s
+  rmse training loss:		0.001571
+  rmse validation loss:		0.001150
+Epoch 1201 took 0.008s
+  rmse training loss:		0.001533
+  rmse validation loss:		0.001188
+Epoch 1301 took 0.008s
+  rmse training loss:		0.001528
+  rmse validation loss:		0.001258
+Epoch 1401 took 0.008s
+  rmse training loss:		0.001519
+  rmse validation loss:		0.001222
+Epoch 1501 took 0.008s
+  rmse training loss:		0.001513
+  rmse validation loss:		0.001135
+Epoch 1601 took 0.008s
+  rmse training loss:		0.001511
+  rmse validation loss:		0.001161
+Epoch 1701 took 0.008s
+  rmse training loss:		0.001510
+  rmse validation loss:		0.001152
+Epoch 1801 took 0.008s
+  rmse training loss:		0.001509
+  rmse validation loss:		0.001155
+Epoch 1901 took 0.008s
+  rmse training loss:		0.001509
+  rmse validation loss:		0.001152
+Epoch 2001 took 0.008s
+  rmse training loss:		0.001509
+  rmse validation loss:		0.001168
+Total number of epochs:  2001
+Final rmse validation error:  0.00116833559972
+RMSE on training data: 0.00147480080645
+RMSE on test data: 0.00223364362015

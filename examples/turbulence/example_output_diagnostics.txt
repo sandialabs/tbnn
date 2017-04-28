@@ -1,0 +1,44 @@
+Re-setting normalization constants
+Epoch 1 took 0.006s
+  rmse training loss:		0.044604
+  rmse validation loss:		0.051292
+Epoch 101 took 0.005s
+  rmse training loss:		0.028431
+  rmse validation loss:		0.040780
+Epoch 201 took 0.005s
+  rmse training loss:		0.024697
+  rmse validation loss:		0.026034
+Epoch 301 took 0.005s
+  rmse training loss:		0.025464
+  rmse validation loss:		0.027257
+Epoch 401 took 0.005s
+  rmse training loss:		0.022639
+  rmse validation loss:		0.017567
+Epoch 501 took 0.005s
+  rmse training loss:		0.022795
+  rmse validation loss:		0.012264
+Epoch 601 took 0.005s
+  rmse training loss:		0.024358
+  rmse validation loss:		0.021326
+Epoch 701 took 0.005s
+  rmse training loss:		0.021903
+  rmse validation loss:		0.022134
+Epoch 801 took 0.005s
+  rmse training loss:		0.022780
+  rmse validation loss:		0.013703
+Epoch 901 took 0.007s
+  rmse training loss:		0.019506
+  rmse validation loss:		0.015295
+Epoch 1001 took 0.005s
+  rmse training loss:		0.020853
+  rmse validation loss:		0.025475
+Epoch 1101 took 0.005s
+  rmse training loss:		0.021214
+  rmse validation loss:		0.015503
+Epoch 1201 took 0.005s
+  rmse training loss:		0.020441
+  rmse validation loss:		0.020335
+Total number of epochs:  1201
+Final rmse validation error:  0.0203353468261
+RMSE on training data: 0.0204253955884
+RMSE on test data: 0.058401284886
