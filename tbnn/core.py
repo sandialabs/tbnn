@@ -4,8 +4,6 @@ import theano.tensor as T
 import theano
 import time
 import cPickle as pickle
-import matplotlib.pyplot as plt
-import matplotlib.tri as tri
 
 """
 Copyright 2017 Sandia Corporation. Under the terms of Contract DE-AC04-94AL85000,
@@ -317,6 +315,7 @@ class TBNN:
         return rmse
 
     def contour_plot(self, x_coords, y_coords, f):
+        import matplotlib.pyplot as plt
         """
         Make a contour plot
         :param x_coords: x coordinates of points
