@@ -50,6 +50,9 @@ class NetworkStructure:
         self.nonlinearity = nonlinearity
         return self
 
+    def clear_nonlinearity_keywords(self):
+        self.nonlinearity_keywords = {}
+
     def set_nonlinearity_keyword(self, key, value):
         if type(key) is not str:
             raise TypeError("NetworkStructure::set_nonlinearity_keywords - The keyword must be a string")
@@ -122,7 +125,10 @@ class TBNN:
         # add keyword options
         for key in self.structure.nonlinearity_keywords:
             nonlinearity_string += list(key+"="+self.structure.nonlinearity_keywords[key]+",")
-        nonlinearity_string[-1] = ")"
+        if self.structure.nonlinearity_keywords:
+            nonlinearity_string[-1] = ")"
+        else:
+            nonlinearity_string += list(")")
         nonlinearity = eval("".join(nonlinearity_string))
         
         input_x = T.dmatrix('input_x')
