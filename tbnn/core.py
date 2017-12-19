@@ -50,7 +50,7 @@ class NetworkStructure:
         self.nonlinearity = nonlinearity
         return self
 
-    def set_nonlinearity_keywords(self, key, value):
+    def set_nonlinearity_keyword(self, key, value):
         if type(key) is not str:
             raise TypeError("NetworkStructure::set_nonlinearity_keywords - The keyword must be a string")
         # all values are stored as strings for later python eval
