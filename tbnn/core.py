@@ -121,14 +121,17 @@ class TBNN:
         Right now, it is hard coded to use a Leaky ReLU activation function for all hidden layers
         """
         # determine type of non-linearity first
-        nonlinearity_string = list("lasagne.nonlinearities."+self.structure.nonlinearity+"(")
-        # add keyword options
-        for key in self.structure.nonlinearity_keywords:
-            nonlinearity_string += list(key+"="+self.structure.nonlinearity_keywords[key]+",")
-        if self.structure.nonlinearity_keywords:
-            nonlinearity_string[-1] = ")"
-        else:
-            nonlinearity_string += list(")")
+        nonlinearity_string = list("lasagne.nonlinearities."+self.structure.nonlinearity)
+        # check if upper to know if there are args and () or not
+        if self.structure.nonlinearity[0].isupper():
+            nonlinearity_string += list("(")
+            # add keyword options
+            for key in self.structure.nonlinearity_keywords:
+                nonlinearity_string += list(key+"="+self.structure.nonlinearity_keywords[key]+",")
+            if self.structure.nonlinearity_keywords:
+                nonlinearity_string[-1] = ")"
+            else:
+                nonlinearity_string += list(")")
         nonlinearity = eval("".join(nonlinearity_string))
         
         input_x = T.dmatrix('input_x')
