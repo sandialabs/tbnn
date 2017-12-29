@@ -26,7 +26,9 @@ class NetworkStructure:
         self.num_nodes = 10  # Number of nodes per hidden layer
         self.num_inputs = None  # Number of scalar invariants
         self.num_tensor_basis = None  # Number of tensors in the tensor basis
-        self.leakiness = 0.1  # Leakiness of leaky ReLU activation functions
+        self.nonlinearity = "LeakyRectify" # non-linearity string conforming to lasagne.nonlinearities tags
+        self.nonlinearity_keywords = {}
+        self.nonlinearity_keywords["leakiness"] = "0.1" # Leakiness of leaky ReLU activation functions
 
     def set_num_layers(self, num_layers):
         self.num_layers = num_layers
@@ -44,8 +46,20 @@ class NetworkStructure:
         self.num_tensor_basis = num_tensor_basis
         return self
 
-    def set_leakiness(self, leakiness):
-        self.leakiness = leakiness
+    def set_nonlinearity(self, nonlinearity):
+        self.nonlinearity = nonlinearity
+        return self
+
+    def clear_nonlinearity_keywords(self):
+        self.nonlinearity_keywords = {}
+
+    def set_nonlinearity_keyword(self, key, value):
+        if type(key) is not str:
+            raise TypeError("NetworkStructure::set_nonlinearity_keywords - The keyword must be a string")
+        # all values are stored as strings for later python eval
+        if type(value) is not str:
+            value = str(value)
+        self.nonlinearity_keywords[key] = value
         return self
 
 
@@ -106,7 +120,20 @@ class TBNN:
         Builds a TBNN with the number of hidden layers and hidden nodes specified in self.structure
         Right now, it is hard coded to use a Leaky ReLU activation function for all hidden layers
         """
-        nonlinearity = lasagne.nonlinearities.LeakyRectify(leakiness=self.structure.leakiness)
+        # determine type of non-linearity first
+        nonlinearity_string = list("lasagne.nonlinearities."+self.structure.nonlinearity)
+        # check if upper to know if there are args and () or not
+        if self.structure.nonlinearity[0].isupper():
+            nonlinearity_string += list("(")
+            # add keyword options
+            for key in self.structure.nonlinearity_keywords:
+                nonlinearity_string += list(key+"="+self.structure.nonlinearity_keywords[key]+",")
+            if self.structure.nonlinearity_keywords:
+                nonlinearity_string[-1] = ")"
+            else:
+                nonlinearity_string += list(")")
+        nonlinearity = eval("".join(nonlinearity_string))
+        
         input_x = T.dmatrix('input_x')
         input_tb = T.dtensor3('input_tb')
         input_layer = lasagne.layers.InputLayer(shape=(None, self.structure.num_inputs), input_var=input_x)
