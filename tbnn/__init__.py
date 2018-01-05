@@ -11,4 +11,4 @@ from .core import TBNN, NetworkStructure, TensorLayer
 from .preprocessor import DataProcessor
 from .version import __version__
 
-__all__ = ['TBNN', 'NetworkStructure', 'DataProcessor', 'TensorLayber', '__version__']
+__all__ = ['TBNN', 'NetworkStructure', 'DataProcessor', 'TensorLayer', '__version__']
