@@ -283,6 +283,7 @@ class TBNN:
             return keep_going
         
         # Do stochastic gradient descent
+        print("Epoch time training_loss validation_loss")
         while keep_going:
             start_time = time.time()
             learning_rate.set_value(np.maximum(learning_rate.get_value()*learning_rate_decay, min_learning_rate))
@@ -305,10 +306,12 @@ class TBNN:
             # Then we print the results for this epoch:
             if epoch % self.print_freq == 0:
                 train_error = valid_function(x_train, tb_train, y_train)
-                print("Epoch {} took {:.3f}s".format(
-                    epoch + 1, time.time() - start_time))
-                print("  rmse training loss:\t\t{:.6f}".format(np.sqrt(train_error)))
-                print("  rmse validation loss:\t\t{:.6f}".format(np.sqrt(val_error)))
+#               print("Epoch {} took {:.3f}s".format(epoch + 1, time.time() - start_time))
+#               print("  rmse training loss:\t\t{:.6f}".format(np.sqrt(train_error)))
+#               print("  rmse validation loss:\t\t{:.6f}".format(np.sqrt(val_error)))
+                print("{0:6d} {1:7.4f} {2:12.8f} {3:12.8f}".format(
+                    epoch + 1, time.time() - start_time,
+                    np.sqrt(train_error),np.sqrt(val_error)))
 
             epoch += 1
 
