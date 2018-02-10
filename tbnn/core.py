@@ -328,6 +328,18 @@ class TBNN:
         y_predicted = prediction_function()
         return y_predicted
 
+    def predict_tensor_coefs(self, x, tb):
+        """
+        Make a prediction for a given set of input scalar invariants x and tensor basis tb
+        :param x: scalar basis
+        :param tb: tensor basis
+        """
+        input_x = lasagne.layers.get_all_layers(self.network)[0].input_var
+        prediction_function = theano.function([], lasagne.layers.get_output(lasagne.layers.get_all_layers(self.network)[-3], deterministic=True),
+                                     givens={input_x: x}, on_unused_input='warn')
+        y_predicted = prediction_function()
+        return y_predicted
+
     def rmse_score(self, y_true, y_predicted):
         """
         Calculate root mean squared error (RMSE)
